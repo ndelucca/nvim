@@ -12,4 +12,9 @@ return require('packer').startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate'})
+
+  use({'VonHeikemen/lsp-zero.nvim', branch = 'v4.x'})
+  use({'neovim/nvim-lspconfig'})
+  use({'hrsh7th/nvim-cmp'})
+  use({'hrsh7th/cmp-nvim-lsp'})
 end)
