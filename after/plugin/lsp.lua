@@ -16,7 +16,6 @@ local lsp_attach = function(client, bufnr)
   vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
   vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
 end
-
 lsp_zero.extend_lspconfig({
   sign_text = true,
   lsp_attach = lsp_attach,
