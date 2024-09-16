@@ -1,4 +1,6 @@
 if vim.g.vscode then 
+    require 'ndelucca.mappings'
+    require 'ndelucca.set'
     return
 end
 
