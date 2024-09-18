@@ -31,3 +31,4 @@ require("lazy").setup({
 })
 
 require 'ndelucca.mappings'
+require 'ndelucca.lsp'
