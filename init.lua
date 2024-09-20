@@ -30,5 +30,6 @@ require("lazy").setup({
   checker = { enabled = true },
 })
 
-require 'ndelucca.mappings'
 require 'ndelucca.lsp'
+require 'ndelucca.extras'
+require 'ndelucca.mappings'
