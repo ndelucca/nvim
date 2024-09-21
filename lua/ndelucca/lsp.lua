@@ -6,6 +6,7 @@ require("mason-lspconfig").setup({
         "eslint",
         "perlnavigator",
         "lua_ls",
+        "gopls",
     },
     handlers = {
         function(server_name)
@@ -51,6 +52,10 @@ require("mason-lspconfig").setup({
                     }
                 }
             })
+        end,
+
+        gopls = function()
+            require('lspconfig').gopls.setup{}
         end,
 
         eslint = function()
