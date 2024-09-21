@@ -3,7 +3,7 @@ require("mason-lspconfig").setup({
     ensure_installed = {
         "ansiblels",
         "pylsp",
-        -- "ruff_lsp",
+        "eslint",
         "perlnavigator",
         "lua_ls",
     },
@@ -53,9 +53,9 @@ require("mason-lspconfig").setup({
             })
         end,
 
-        -- ruff_lsp = function()
-        --     require('lspconfig').ruff_lsp.setup({})
-        -- end,
+        eslint = function()
+            require('lspconfig').eslint.setup({})
+        end,
 
         perlnavigator = function()
             require('lspconfig').perlnavigator.setup({})
