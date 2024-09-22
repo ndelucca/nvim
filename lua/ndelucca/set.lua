@@ -3,6 +3,9 @@ vim.g.maplocalleader = "\\"
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+
 vim.opt.fileformats = "unix"
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -21,9 +24,12 @@ vim.opt.undofile = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 15
 vim.opt.signcolumn = "yes"
-vim.opt.isfname:append("@-@")
+
+vim.opt.virtualedit = "block"
+
+vim.opt.inccommand = "split"
 
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "100"

@@ -6,7 +6,7 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     config = function()
         vim.g.skip_ts_context_commentstring_module = true
-        require "nvim-treesitter.configs".setup {
+        require("nvim-treesitter.configs").setup {
             auto_install = true,
             highlight = {
                 enable = true,
@@ -29,7 +29,6 @@ return {
                 "json",
                 "markdown",
                 "typescript",
-                "javascript",
                 "html"
             },
         }
