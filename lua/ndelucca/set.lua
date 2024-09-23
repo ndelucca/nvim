@@ -34,7 +34,8 @@ vim.opt.inccommand = "split"
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "100"
 
-vim.opt.clipboard = "unnamedplus"
+-- vim.opt.clipboard = "unnamedplus"
+vim.opt.clipboard:append('unnamedplus')
 
 vim.opt.eof = true
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
