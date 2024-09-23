@@ -11,5 +11,5 @@ local function interactive_search_replace()
     vim.cmd("execute ':%s/" .. selected_text .. "/" .. replacement_text .. "/gc'")
 end
 
-vim.keymap.set('v', '<leader><C-d>', function() interactive_replace() end, { noremap = true, silent = false })
-vim.keymap.set('n', '<leader><C-f>', function() interactive_search_replace() end, { noremap = true, silent = false })
+vim.keymap.set('v', '<leader>fd', function() interactive_replace() end, { noremap = true, silent = false })
+vim.keymap.set('n', '<leader>ff', function() interactive_search_replace() end, { noremap = true, silent = false })
