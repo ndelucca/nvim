@@ -46,7 +46,7 @@ require("mason-lspconfig").setup({
                                 ignore = { "D210" },                             -- Rules to be ignored by ruff
                                 perFileIgnores = { ["__init__.py"] = "CPY001" }, -- Rules that should be ignored for specific files
                                 preview = false,                                 -- Whether to enable the preview style linting and formatting.
-                                targetVersion = "py39",                          -- The minimum python version to target (applies for both linting and formatting).
+                                targetVersion = "py311",                          -- The minimum python version to target (applies for both linting and formatting).
                             },
                         }
                     }
