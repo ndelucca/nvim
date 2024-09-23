@@ -5,9 +5,9 @@ if vim.g.vscode then
     return
 end
 
+require 'ndelucca.set'
 require 'ndelucca.lazyinit'
 require 'ndelucca.lsp'
-require 'ndelucca.set'
 require 'ndelucca.extras'
 require 'ndelucca.mappings'
 require 'ndelucca.macros'
