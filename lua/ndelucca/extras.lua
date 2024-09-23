@@ -21,3 +21,5 @@ require('Comment').setup({
         extra = false,
     },
 })
+
+require('treesitter-context').setup({})
