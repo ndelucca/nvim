@@ -8,6 +8,7 @@ end
 require 'ndelucca.set'
 require 'ndelucca.lazyinit'
 require 'ndelucca.lsp'
-require 'ndelucca.extras'
+require 'ndelucca.treesitter'
+require 'ndelucca.git'
 require 'ndelucca.mappings'
 require 'ndelucca.macros'
