@@ -1,5 +1,3 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -34,8 +32,7 @@ vim.opt.inccommand = "split"
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "100"
 
-local display = os.getenv("DISPLAY")
-if display then
+if os.getenv("DISPLAY") then
     vim.opt.clipboard = "unnamedplus"
 end
 

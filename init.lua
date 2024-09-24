@@ -1,15 +1,10 @@
-if vim.g.vscode then
-    require 'ndelucca.mappings'
-    require 'ndelucca.set'
-    require 'ndelucca.macros'
-    return
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
+if not vim.g.vscode then
+    require 'ndelucca.lazyinit'
 end
 
 require 'ndelucca.set'
-require 'ndelucca.lazyinit'
-require 'ndelucca.lsp'
-require 'ndelucca.treesitter'
-require 'ndelucca.git'
-require 'ndelucca.mini'
 require 'ndelucca.mappings'
 require 'ndelucca.macros'

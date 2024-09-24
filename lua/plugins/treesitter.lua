@@ -1,4 +1,6 @@
 return {
+    { 'nvim-treesitter/nvim-treesitter-context' },
+    { 'nvim-treesitter/nvim-treesitter-textobjects' },
     {
         "nvim-treesitter/nvim-treesitter",
         version = false,
@@ -46,8 +48,7 @@ return {
                     "go", "css", "yaml", "bash", "json", "markdown", "typescript", "html"
                 },
             }
+            require('treesitter-context').setup({})
         end,
     },
-    { 'nvim-treesitter/nvim-treesitter-context' },
-    { 'nvim-treesitter/nvim-treesitter-textobjects' },
 }
