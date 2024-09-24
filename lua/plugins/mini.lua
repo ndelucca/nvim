@@ -7,6 +7,8 @@ return {
             require('mini.cursorword').setup({})
             require('mini.move').setup({})
             require('mini.pairs').setup({})
+            require('mini.icons').setup({})
+            require('mini.tabline').setup({})
             require('mini.comment').setup({
                 mappings = {
                     comment = '',
