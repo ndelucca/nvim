@@ -55,7 +55,7 @@ require("mason-lspconfig").setup({
         end,
 
         gopls = function()
-            require('lspconfig').gopls.setup {}
+            require('lspconfig').gopls.setup({})
         end,
 
         eslint = function()
