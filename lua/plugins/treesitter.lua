@@ -38,9 +38,6 @@ return {
                             ["ic"] = { query = "@class.inner", desc = "Select inner part of a class" },
                             ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
                         },
-                        selection_modes = {
-                            ['@class.outer'] = '<c-v>', -- blockwise
-                        },
                     },
                 },
                 ensure_installed = {
