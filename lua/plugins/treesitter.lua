@@ -45,7 +45,10 @@ return {
                     "go", "css", "yaml", "bash", "json", "markdown", "typescript", "html"
                 },
             }
-            require('treesitter-context').setup({})
+            require('treesitter-context').setup({
+                max_lines = 1,
+                multiline_threshold = 20,
+            })
         end,
     },
 }
