@@ -22,7 +22,25 @@ return {
         "williamboman/mason-lspconfig.nvim",
         dependencies = { "mason.nvim" },
         config = function()
-            require("mason-lspconfig").setup({ automatic_installation = true })
+            require("mason-lspconfig").setup({
+                ensure_installed = {
+                    "awk_ls",
+                    "bashls",
+                    "cssls",
+                    "dockerls",
+                    "gopls",
+                    "grammarly",
+                    "html",
+                    "jsonls",
+                    "lua_ls",
+                    "marksman",
+                    "pyright",
+                    "harper_ls",
+                    "sqls",
+                    "yamlls"
+                },
+                automatic_installation = true
+            })
             require("mason-lspconfig").setup_handlers({
                 function(server_name)
                     require('lspconfig')[server_name].setup({
@@ -32,21 +50,15 @@ return {
 
                 ["ansiblels"] = function()
                     require('lspconfig').ansiblels.setup({
+                        on_attach = lsp_keymaps,
                         filetypes = { "yaml.ansible", "yml", "yaml" }
-                    })
-                end,
-
-                ["pylsp"] = function()
-                    require('lspconfig').pylsp.setup({
-                        settings = {
-                            pylsp = { plugins = { ruff = { enabled = true, formatEnabled = true } } }
-                        }
                     })
                 end,
 
                 ["lua_ls"] = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.lua_ls.setup {
+                        on_attach = lsp_keymaps,
                         settings = {
                             Lua = { diagnostics = { globals = { "vim" } } }
                         }
