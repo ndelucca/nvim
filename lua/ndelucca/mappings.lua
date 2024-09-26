@@ -7,6 +7,7 @@ vim.keymap.set('n', '<leader>fww', ':bd!<CR>', { silent = true })
 
 vim.keymap.set({ 'n', 'v' }, '<leader>I', function() vim.lsp.buf.format({ async = true }) end, { noremap = true })
 
-vim.keymap.set({'n'}, '<C-j>', ':bprev<CR>', { noremap = true })
-vim.keymap.set({'n'}, '<C-k>', ':bnext<CR>', { noremap = true })
-vim.keymap.set({'n'}, '<leader>qw', ':bufdo bd<CR>', { noremap = true })
+vim.keymap.set('n', '<C-j>', ':bprev<CR>', { noremap = true })
+vim.keymap.set('n', '<C-k>', ':bnext<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>qw', ':bufdo bd<CR>', { noremap = true })
+

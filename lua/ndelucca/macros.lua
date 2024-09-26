@@ -13,3 +13,11 @@ end
 
 vim.keymap.set('v', '<leader>fd', function() interactive_replace() end, { noremap = true, silent = false })
 vim.keymap.set('n', '<leader>ff', function() interactive_search_replace() end, { noremap = true, silent = false })
+
+vim.api.nvim_create_user_command(
+    'ToggleSplitStruct',
+    function()
+        require('mini.splitjoin').toggle()
+    end,
+    { desc = "Splits or folds a multi-value data structure." }
+)
