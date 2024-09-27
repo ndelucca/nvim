@@ -76,8 +76,23 @@ return {
                 end,
 
                 ["ruff"] = function()
+                    local ruff_keymaps = function(client, bufnr)
+
+                        vim.api.nvim_create_user_command('RuffOrganizeImports', function(input)
+                            vim.api.nvim_command("write | silent! !ruff check --select I --fix % | edit | undo")
+                        end, { nargs = '*' })
+
+                        lsp_keymaps(client, bufnr)
+
+                        vim.keymap.set("n", "<leader>I", function()
+                            vim.lsp.buf.format()
+                            vim.cmd("RuffOrganizeImports")
+                        end, { noremap = true })
+
+                    end
+
                     require("lspconfig").ruff.setup({
-                        on_attach = lsp_keymaps,
+                        on_attach = ruff_keymaps,
                         settings = {
                             configurationPreference = "filesystemFirst",
                             organizeImports = true,
