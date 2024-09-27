@@ -5,6 +5,7 @@ local lsp_keymaps = function(client, bufnr)
     vim.keymap.set("n", "<F12>", vim.lsp.buf.definition, opts)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
     vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
+    vim.keymap.set("n", "<leader>I", vim.lsp.buf.format, { noremap = true })
     -- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 end
 
@@ -35,7 +36,7 @@ return {
                     "lua_ls",
                     "marksman",
                     "pyright",
-                    "harper_ls",
+                    -- "harper_ls",
                     "sqls",
                     "yamlls"
                 },
@@ -56,14 +57,34 @@ return {
                 end,
 
                 ["lua_ls"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.lua_ls.setup {
+                    require("lspconfig").lua_ls.setup {
                         on_attach = lsp_keymaps,
                         settings = {
                             Lua = { diagnostics = { globals = { "vim" } } }
                         }
                     }
                 end,
+
+                ["pyright"] = function()
+                    require("lspconfig").pyright.setup({
+                        on_attach = lsp_keymaps,
+                        settings = {
+                            pyright = { disableOrganizeImports = true, },
+                            python = { analysis = { ignore = { '*' }, }, },
+                        }
+                    })
+                end,
+
+                ["ruff"] = function()
+                    require("lspconfig").ruff.setup({
+                        on_attach = lsp_keymaps,
+                        settings = {
+                            configurationPreference = "filesystemFirst",
+                            organizeImports = true,
+                        }
+                    })
+                end,
+
             })
         end
     },
