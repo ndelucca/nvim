@@ -10,7 +10,6 @@ return {
             require('mini.icons').setup({})
             require('mini.tabline').setup({})
             require('mini.statusline').setup({})
-            require('mini.sessions').setup({})
             require('mini.files').setup({
                 windows = {
                     preview = true,
