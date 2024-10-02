@@ -6,7 +6,16 @@ local lsp_keymaps = function(client, bufnr)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
     vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
     vim.keymap.set("n", "<leader>I", vim.lsp.buf.format, { noremap = true })
-    -- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 end
 
 return {
@@ -25,44 +34,29 @@ return {
         config = function()
             require("mason-lspconfig").setup({
                 ensure_installed = {
-                    "awk_ls",
-                    "bashls",
-                    "cssls",
-                    "dockerls",
-                    "gopls",
-                    "grammarly",
-                    "html",
-                    "jsonls",
-                    "lua_ls",
-                    "marksman",
-                    "pyright",
-                    -- "harper_ls",
-                    "sqls",
-                    "yamlls"
+                    "awk_ls", "bashls", "cssls", "dockerls", "gopls", "grammarly", "html",
+                    "jsonls", "lua_ls", "marksman", "pyright", "sqls", "yamlls"
                 },
                 automatic_installation = true
             })
             require("mason-lspconfig").setup_handlers({
+
                 function(server_name)
-                    require('lspconfig')[server_name].setup({
-                        on_attach = lsp_keymaps,
-                    })
+                    require('lspconfig')[server_name].setup({ on_attach = lsp_keymaps, })
                 end,
 
                 ["ansiblels"] = function()
                     require('lspconfig').ansiblels.setup({
-                        on_attach = lsp_keymaps,
-                        filetypes = { "yaml.ansible", "yml", "yaml" }
+                        filetypes = {
+                            "yaml.ansible", "yml", "yaml"
+                        }
                     })
                 end,
 
                 ["lua_ls"] = function()
-                    require("lspconfig").lua_ls.setup {
-                        on_attach = lsp_keymaps,
-                        settings = {
-                            Lua = { diagnostics = { globals = { "vim" } } }
-                        }
-                    }
+                    require("lspconfig").lua_ls.setup { on_attach = lsp_keymaps, settings = {
+                        Lua = { diagnostics = { globals = { "vim" } } }
+                    } }
                 end,
 
                 ["pyright"] = function()
@@ -76,26 +70,10 @@ return {
                 end,
 
                 ["ruff"] = function()
-                    local ruff_keymaps = function(client, bufnr)
-
-                        vim.api.nvim_create_user_command('RuffOrganizeImports', function(input)
-                            vim.api.nvim_command("write | silent! !ruff check --select I --fix % | edit | undo")
-                        end, { nargs = '*' })
-
-                        lsp_keymaps(client, bufnr)
-
-                        vim.keymap.set("n", "<leader>I", function()
-                            vim.lsp.buf.format()
-                            vim.cmd("RuffOrganizeImports")
-                        end, { noremap = true })
-
-                    end
-
                     require("lspconfig").ruff.setup({
-                        on_attach = ruff_keymaps,
+                        on_attach = lsp_keymaps,
                         settings = {
-                            configurationPreference = "filesystemFirst",
-                            organizeImports = true,
+                            configurationPreference = "filesystemFirst", organizeImports = true,
                         }
                     })
                 end,
