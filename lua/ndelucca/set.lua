@@ -45,3 +45,5 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
         vim.fn.setpos(".", save_cursor)
     end,
 })
+
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
