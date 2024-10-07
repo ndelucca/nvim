@@ -1,23 +1,14 @@
 return {
     {
-        'olivercederborg/poimandres.nvim',
+        "projekt0n/github-nvim-theme",
+        name = "github-theme",
         lazy = false,
         priority = 1000,
         config = function()
-            require('poimandres').setup {
-                -- leave this setup function empty for default config
-                -- or refer to the configuration section
-                -- for configuration options
-            }
+            require("github-theme").setup({})
         end,
         init = function()
-            vim.cmd("colorscheme poimandres")
-        end
-    -- },
-    -- {
-    --     'rebelot/kanagawa.nvim',
-    --     config = function()
-    --         vim.cmd.colorscheme("kanagawa-dragon")
-    --     end
+            vim.cmd("colorscheme github_dark_default")
+        end,
     },
 }
