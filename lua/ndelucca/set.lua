@@ -4,6 +4,9 @@ vim.opt.relativenumber = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
+vim.opt.list = true
+vim.opt.listchars = { tab = "->", trail = '·' }
+
 vim.opt.fileformats = "unix"
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4

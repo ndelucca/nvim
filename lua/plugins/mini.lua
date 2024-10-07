@@ -10,14 +10,6 @@ return {
             require('mini.icons').setup({})
             require('mini.tabline').setup({})
             require('mini.statusline').setup({})
-            require('mini.files').setup({
-                windows = {
-                    preview = true,
-                    width_focus = 30,
-                    width_nofocus = 30,
-                    width_preview = 70,
-                },
-            })
             require('mini.comment').setup({
                 mappings = {
                     comment = '',
