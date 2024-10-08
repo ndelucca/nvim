@@ -1,7 +1,6 @@
 local lsp_keymaps = function(client, bufnr)
     local opts = { noremap = true, silent = true, buffer = bufnr }
 
-    vim.keymap.set("n", "<S-F12>", vim.lsp.buf.declaration, opts)
     vim.keymap.set("n", "<F12>", vim.lsp.buf.definition, opts)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
     vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
@@ -79,6 +78,18 @@ return {
                     })
                 end,
 
+                ["perlnavigator"] = require('lspconfig').perlnavigator.setup({
+                    cmd = { "perlnavigator" },
+                    settings = {
+                        perlnavigator = {
+                            perlPath = 'perl',
+                            enableWarnings = true,
+                            -- perltidyProfile = '',
+                            -- perlcriticProfile = '',
+                            perlcriticEnabled = true,
+                        }
+                    }
+                })
             })
         end
     },
