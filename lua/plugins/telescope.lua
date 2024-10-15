@@ -18,7 +18,7 @@ return {
             vim.keymap.set("n", "<leader>fG", live_grep_args_shortcuts.grep_visual_selection)
             vim.keymap.set("n", "<leader>fs", live_grep_args.live_grep_args)
 
-            vim.keymap.set("n", "_", ":Telescope file_browser<CR>")
+            vim.keymap.set("n", "<leader>-", ":Telescope file_browser<CR>")
             vim.keymap.set("n", "-", ":Telescope file_browser path=%:p:h select_buffer=true<CR>")
 
             require('telescope').setup({
