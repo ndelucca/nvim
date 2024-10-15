@@ -10,14 +10,6 @@ return {
             require('mini.icons').setup({})
             require('mini.tabline').setup({})
             require('mini.statusline').setup({})
-            require('mini.comment').setup({
-                mappings = {
-                    comment = '',
-                    comment_line = '<leader>cl',
-                    comment_visual = '<leader>cl',
-                    textobject = '',
-                },
-            })
             require('mini.surround').setup({
                 highlight_duration = 500,
                 mappings = {
