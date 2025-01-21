@@ -7,6 +7,8 @@ vim.opt.splitright = true
 vim.opt.list = true
 vim.opt.listchars = { tab = "->", trail = '·' }
 
+vim.opt.iskeyword:remove(":")
+
 vim.opt.fileformats = "unix"
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
