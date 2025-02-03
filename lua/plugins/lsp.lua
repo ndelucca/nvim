@@ -124,9 +124,20 @@ return {
                         perlnavigator = {
                             perlPath = 'perl',
                             enableWarnings = true,
-                            -- perltidyProfile = '',
-                            -- perlcriticProfile = '',
                             perlcriticEnabled = true,
+                            includePaths = {
+                                "./",
+                                "./aula/",
+                                "./aula/libs/",
+                                "./lib/perl/",
+                                "./build/lib/",
+                            },
+                            perlParams = {
+                                "-I", "/var/www/educativa/campus-dev/aula/",
+                                "-I", "/var/www/educativa/campus-dev/aula/libs/",
+                                "-I", "/var/www/educativa/campus-dev/lib/perl/",
+                                "-I", "/var/www/educativa/campus-dev/build/lib/",
+                            },
                         }
                     }
                 })
