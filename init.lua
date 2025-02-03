@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-if not vim.g.vscode then
+if vim.g.vscode == nil then
     require 'ndelucca.lazyinit'
 end
 
