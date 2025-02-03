@@ -1,3 +1,12 @@
+local iskeyword = vim.opt.iskeyword:get()
+local function remove_from_iskeyword(chars)
+    for _, char in ipairs(chars) do
+        vim.opt.iskeyword:remove(char)
+    end
+end
+
+remove_from_iskeyword({ ":" })
+
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -6,8 +15,6 @@ vim.opt.splitright = true
 
 vim.opt.list = true
 vim.opt.listchars = { tab = "->", trail = '·' }
-
-vim.opt.iskeyword:remove(":")
 
 vim.opt.fileformats = "unix"
 vim.opt.tabstop = 4
@@ -51,4 +58,4 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     end,
 })
 
-vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
