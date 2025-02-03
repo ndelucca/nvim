@@ -1,11 +1,4 @@
-local iskeyword = vim.opt.iskeyword:get()
-local function remove_from_iskeyword(chars)
-    for _, char in ipairs(chars) do
-        vim.opt.iskeyword:remove(char)
-    end
-end
-
-remove_from_iskeyword({ ":" })
+vim.opt.iskeyword:remove(":")
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
