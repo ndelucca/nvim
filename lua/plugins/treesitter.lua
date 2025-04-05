@@ -1,5 +1,4 @@
 return {
-    { 'nvim-treesitter/nvim-treesitter-context' },
     { 'nvim-treesitter/nvim-treesitter-textobjects' },
     {
         "nvim-treesitter/nvim-treesitter",
@@ -45,10 +44,6 @@ return {
                     "go", "css", "yaml", "bash", "json", "markdown", "typescript", "html"
                 },
             }
-            require('treesitter-context').setup({
-                max_lines = 1,
-                multiline_threshold = 20,
-            })
         end,
     },
 }
