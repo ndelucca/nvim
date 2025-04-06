@@ -47,6 +47,32 @@ return {
                     require('lspconfig')[server_name].setup({ on_attach = lsp_keymaps, })
                 end,
 
+                ["ansiblels"] = function()
+                    require("lspconfig").ansiblels.setup {
+                        filetypes = {
+                            "yaml",
+                        },
+                        on_attach = lsp_keymaps,
+                        settings = {
+                            ansible = {
+                                ansible = {
+                                    path = "ansible",
+                                    useFullyQualifiedCollectionNames = true
+                                },
+                                ansibleLint = {
+                                    enabled = true,
+                                },
+                                executionEnvironment = {
+                                    enabled = false,
+                                },
+                                completion = {
+                                    provideRedirectModules = true,
+                                    provideModuleOptionAliases = true
+                                }
+                            },
+                        },
+                    }
+                end,
 
                 ["lua_ls"] = function()
                     require("lspconfig").lua_ls.setup { on_attach = lsp_keymaps, settings = {
