@@ -33,6 +33,12 @@ return {
         dependencies = { "mason.nvim" },
         config = function()
             require("mason-lspconfig").setup({
+                ensure_installed = {
+                    "lua_ls",
+                    "pyright",
+                    "ruff",
+                    "perlnavigator",
+                },
                 automatic_installation = true
             })
             require("mason-lspconfig").setup_handlers({
@@ -67,29 +73,7 @@ return {
                     })
                 end,
 
-                ["perlnavigator"] = require('lspconfig').perlnavigator.setup({
-                    cmd = { "perlnavigator" },
-                    settings = {
-                        perlnavigator = {
-                            perlPath = 'perl',
-                            enableWarnings = true,
-                            perlcriticEnabled = true,
-                            includePaths = {
-                                "./",
-                                "./aula/",
-                                "./aula/libs/",
-                                "./lib/perl/",
-                                "./build/lib/",
-                            },
-                            perlParams = {
-                                "-I", "/var/www/educativa/campus-dev/aula/",
-                                "-I", "/var/www/educativa/campus-dev/aula/libs/",
-                                "-I", "/var/www/educativa/campus-dev/lib/perl/",
-                                "-I", "/var/www/educativa/campus-dev/build/lib/",
-                            },
-                        }
-                    }
-                })
+                ["perlnavigator"] = require('lspconfig').perlnavigator.setup({ cmd = { "perlnavigator" } })
             })
         end
     },
