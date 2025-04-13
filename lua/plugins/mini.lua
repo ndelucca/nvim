@@ -8,7 +8,6 @@ return {
             require('mini.pairs').setup({})
             require('mini.icons').setup({})
             require('mini.tabline').setup({})
-            require('mini.statusline').setup({})
             require('mini.surround').setup({
                 highlight_duration = 500,
                 mappings = {

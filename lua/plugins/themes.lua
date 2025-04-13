@@ -11,4 +11,13 @@ return {
             vim.cmd("colorscheme github_dark_default")
         end,
     },
+    {
+        "sschleemilch/slimline.nvim",
+        opts = {},
+        config = function()
+            require("slimline").setup({
+                style = 'fg',
+            })
+        end
+    },
 }
