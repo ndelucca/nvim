@@ -21,7 +21,7 @@ return {
     },
     {
         "williamboman/mason.nvim",
-        version = "v1.10.0",
+        version = "^v1.",
         config = function()
             require("mason").setup({})
         end
@@ -29,13 +29,14 @@ return {
     {
         "williamboman/mason-lspconfig.nvim",
         dependencies = { "mason.nvim" },
+        version = "^v1.",
         config = function()
             require("mason-lspconfig").setup({
                 ensure_installed = {
-                    "lua_ls",
-                    "pyright",
-                    "ruff",
-                    "perlnavigator",
+                    -- "lua_ls",
+                    -- "pyright",
+                    -- "ruff",
+                    -- "perlnavigator",
                 },
                 automatic_installation = true
             })
