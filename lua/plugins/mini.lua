@@ -7,7 +7,7 @@ return {
             require('mini.move').setup({})
             require('mini.pairs').setup({})
             require('mini.icons').setup({})
-            -- require('mini.tabline').setup({})
+            require('mini.tabline').setup({})
             require('mini.surround').setup({
                 highlight_duration = 500,
                 mappings = {
