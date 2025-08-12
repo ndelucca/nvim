@@ -6,6 +6,7 @@ local lsp_keymaps = function(client, bufnr)
     vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
     vim.keymap.set("n", "<leader>I", vim.lsp.buf.format, { noremap = true })
 
+    vim.keymap.set("n", "tt", vim.diagnostic.open_float, opts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
