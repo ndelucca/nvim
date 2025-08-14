@@ -21,6 +21,19 @@ return {
         end
     },
     {
-      "folke/zen-mode.nvim", opts = {}
+        "folke/zen-mode.nvim",
+        opts = {},
+        config = function()
+            require("zen-mode").setup({
+                plugins = {
+                    options = {
+                        enabled = false,
+                        laststatus = 0,
+                        showtabline = 0,
+                    },
+                },
+            })
+            vim.keymap.set({"n", "x"}, "<leader>z", ":ZenMode<CR>")
+        end
     }
 }
