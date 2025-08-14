@@ -33,7 +33,26 @@ return {
                     },
                 },
             })
-            vim.keymap.set({"n", "x"}, "<leader>z", ":ZenMode<CR>")
+            vim.keymap.set({ "n", "x" }, "<leader>z", ":ZenMode<CR>")
         end
+    },
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        opts = {},
+        config = function()
+            require("noice").setup({
+                lsp = {
+                    override = {
+                        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                        ["vim.lsp.util.stylize_markdown"] = true,
+                        ["cmp.entry.get_documentation"] = true,
+                    },
+                },
+            })
+        end,
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+        }
     }
 }
