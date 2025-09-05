@@ -18,9 +18,6 @@ return {
             vim.keymap.set("n", "<leader>fG", live_grep_args_shortcuts.grep_visual_selection)
             vim.keymap.set("n", "<leader>fs", live_grep_args.live_grep_args)
 
-            vim.keymap.set("n", "<leader>-", ":Telescope file_browser<CR>")
-            vim.keymap.set("n", "-", ":Telescope file_browser path=%:p:h select_buffer=true<CR>")
-
             require('telescope').setup({
                 defaults = {
                     vimgrep_arguments = {
@@ -33,13 +30,6 @@ return {
                     layout_config = { horizontal = { preview_width = 0.5 } },
                 },
             })
-        end,
-    },
-    {
-        "nvim-telescope/telescope-file-browser.nvim",
-        dependencies = { "nvim-telescope/telescope.nvim" },
-        config = function()
-            require("telescope").load_extension("file_browser")
         end,
     },
     {
