@@ -78,15 +78,6 @@ return {
                     } }
                 end,
 
-                ["pyright"] = function()
-                    require("lspconfig").pyright.setup({
-                        on_attach = lsp_keymaps,
-                        settings = {
-                            pyright = { disableOrganizeImports = true, },
-                            python = { analysis = { ignore = { '*' }, }, },
-                        }
-                    })
-                end,
 
                 ["ruff"] = function()
                     require("lspconfig").ruff.setup({
@@ -97,7 +88,12 @@ return {
                     })
                 end,
 
-                ["perlnavigator"] = require('lspconfig').perlnavigator.setup({ cmd = { "perlnavigator" } })
+                ["perlnavigator"] = function()
+                    require('lspconfig').perlnavigator.setup({
+                        cmd = { "perlnavigator" },
+                        on_attach = lsp_keymaps,
+                    })
+                end,
             })
         end
     },
