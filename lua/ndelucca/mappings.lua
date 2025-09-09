@@ -1,13 +1,13 @@
-vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true })
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Page up and center" })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Page down and center" })
 
-vim.keymap.set('n', '<C-h>', ':bprev<CR>', { noremap = true })
-vim.keymap.set('n', '<C-l>', ':bnext<CR>', { noremap = true })
+vim.keymap.set('n', '[b', ':bprev<CR>', { desc = 'Previous buffer' })
+vim.keymap.set('n', ']b', ':bnext<CR>', { desc = 'Next buffer' })
 
-vim.keymap.set('n', '<C-j>', ':cprev<CR>', { noremap = true })
-vim.keymap.set('n', '<C-k>', ':cnext<CR>', { noremap = true })
-vim.keymap.set('n', '<leader>co', ':copen<CR>', { noremap = true })
-vim.keymap.set('n', '<leader>cc', ':cclose<CR>', { noremap = true })
+vim.keymap.set('n', '[q', ':cprev<CR>', { desc = 'Previous quickfix' })
+vim.keymap.set('n', ']q', ':cnext<CR>', { desc = 'Next quickfix' })
+vim.keymap.set('n', '<leader>co', ':copen<CR>', { desc = 'Open quickfix list' })
+vim.keymap.set('n', '<leader>cc', ':cclose<CR>', { desc = 'Close quickfix list' })
 
 vim.keymap.set("n", "-", ":lua MiniFiles.open()<CR>", { desc = "File explorer" })
 

@@ -6,16 +6,16 @@ return {
         mc.setup()
 
         -- Add or skip cursor above/below the main cursor.
-        vim.keymap.set({"n", "x"}, "<leader>k", function() mc.lineAddCursor(-1) end)
-        vim.keymap.set({"n", "x"}, "<leader>j", function() mc.lineAddCursor(1) end)
-        vim.keymap.set({"n", "x"}, "<leader>K", function() mc.lineSkipCursor(-1) end)
-        vim.keymap.set({"n", "x"}, "<leader>J", function() mc.lineSkipCursor(1) end)
+        vim.keymap.set({"n", "x"}, "<leader>k", function() mc.lineAddCursor(-1) end, { desc = "Add cursor above" })
+        vim.keymap.set({"n", "x"}, "<leader>j", function() mc.lineAddCursor(1) end, { desc = "Add cursor below" })
+        vim.keymap.set({"n", "x"}, "<leader>K", function() mc.lineSkipCursor(-1) end, { desc = "Skip cursor above" })
+        vim.keymap.set({"n", "x"}, "<leader>J", function() mc.lineSkipCursor(1) end, { desc = "Skip cursor below" })
 
         -- Add or skip adding a new cursor by matching word/selection
-        vim.keymap.set({"n", "x"}, "<leader>n", function() mc.matchAddCursor(1) end)
-        vim.keymap.set({"n", "x"}, "<leader>s", function() mc.matchSkipCursor(1) end)
-        vim.keymap.set({"n", "x"}, "<leader>N", function() mc.matchAddCursor(-1) end)
-        vim.keymap.set({"n", "x"}, "<leader>S", function() mc.matchSkipCursor(-1) end)
+        vim.keymap.set({"n", "x"}, "<leader>ma", function() mc.matchAddCursor(1) end, { desc = "Add cursor on next match" })
+        vim.keymap.set({"n", "x"}, "<leader>ms", function() mc.matchSkipCursor(1) end, { desc = "Skip next match" })
+        vim.keymap.set({"n", "x"}, "<leader>mA", function() mc.matchAddCursor(-1) end, { desc = "Add cursor on prev match" })
+        vim.keymap.set({"n", "x"}, "<leader>mS", function() mc.matchSkipCursor(-1) end, { desc = "Skip prev match" })
 
         -- Add and remove cursors with control + left click.
         vim.keymap.set("n", "<c-leftmouse>", mc.handleMouse)
@@ -23,7 +23,7 @@ return {
         vim.keymap.set("n", "<c-leftrelease>", mc.handleMouseRelease)
 
         -- Disable and enable cursors.
-        vim.keymap.set({"n", "x"}, "<c-q>", mc.toggleCursor)
+        vim.keymap.set({"n", "x"}, "<leader>mt", mc.toggleCursor, { desc = "Toggle multicursor" })
 
         -- Mappings defined in a keymap layer only apply when there are
         -- multiple cursors. This lets you have overlapping mappings.
