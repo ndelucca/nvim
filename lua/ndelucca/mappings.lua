@@ -30,3 +30,11 @@ vim.keymap.set('n', ']c', ':Gitsigns next_hunk<CR>', { desc = 'Next hunk' })
 vim.keymap.set('n', '[c', ':Gitsigns prev_hunk<CR>', { desc = 'Previous hunk' })
 
 vim.keymap.set({ "n", "x" }, "<leader>z", ":ZenMode<CR>", { desc = "Toggle zen mode" })
+
+vim.api.nvim_create_user_command(
+    'ToggleSplitStruct',
+    function()
+        require('mini.splitjoin').toggle()
+    end,
+    { desc = "Splits or folds a multi-value data structure." }
+)

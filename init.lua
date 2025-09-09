@@ -7,4 +7,3 @@ end
 
 require 'ndelucca.set'
 require 'ndelucca.mappings'
-require 'ndelucca.macros'
