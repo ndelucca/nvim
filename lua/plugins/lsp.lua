@@ -46,7 +46,7 @@ return {
                 end,
 
                 ["ansiblels"] = function()
-                    require("lspconfig").ansiblels.setup {
+                    vim.lsp.config('ansiblels', {
                         filetypes = {
                             "yaml",
                         },
@@ -70,17 +70,19 @@ return {
                             },
                         },
                     }
+                )
                 end,
 
                 ["lua_ls"] = function()
-                    require("lspconfig").lua_ls.setup { on_attach = lsp_keymaps, settings = {
-                        Lua = { diagnostics = { globals = { "vim" } } }
-                    } }
+                    vim.lsp.config('lua_ls', { on_attach = lsp_keymaps, settings = {
+                            Lua = { diagnostics = { globals = { "vim" } } }
+                        }
+                    })
                 end,
 
 
                 ["ruff"] = function()
-                    require("lspconfig").ruff.setup({
+                    vim.lsp.config('ruff', {
                         on_attach = lsp_keymaps,
                         settings = {
                             configurationPreference = "filesystemFirst", organizeImports = true,
@@ -89,7 +91,7 @@ return {
                 end,
 
                 ["perlnavigator"] = function()
-                    require('lspconfig').perlnavigator.setup({
+                    vim.lsp.config('perlnavigator',{
                         cmd = { "perlnavigator" },
                         on_attach = lsp_keymaps,
                     })
