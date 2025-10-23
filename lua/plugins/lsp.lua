@@ -63,12 +63,12 @@ return {
                 end,
                 settings = {
                     ty = {
+                        pythonPath = vim.fn.exepath('python3'),
                         experimental = {
                             rename = true,
                             autoImport = true,
                         },
                         python = {
-                            pythonPath = vim.fn.exepath('python3') or vim.fn.exepath('python'),
                             analysis = {
                                 extraPaths = {},
                                 -- Add additional custom paths here:
@@ -82,11 +82,8 @@ return {
             local language_servers = {
                 'ty',
                 'ruff',
-                'ts_ls',
                 'html',
                 'perlnavigator',
-                'clangd',
-                'texlab',
                 'lua_ls',
                 'ansiblels',
             }
