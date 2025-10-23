@@ -38,11 +38,42 @@ return {
             })
 
             vim.lsp.config('ty', {
+                root_dir = function(fname)
+                    local util = require('lspconfig.util')
+                    return util.root_pattern('pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', '.git')(fname)
+                end,
+                before_init = function(_, config)
+                    local root_dir = config.root_dir or vim.fn.getcwd()
+                    local extra_paths = {}
+
+                    -- Common project library directories
+                    local common_lib_dirs = { 'lib', 'libs', 'vendor', 'src' }
+
+                    for _, dir in ipairs(common_lib_dirs) do
+                        local path = root_dir .. '/' .. dir
+                        if vim.fn.isdirectory(path) == 1 then
+                            table.insert(extra_paths, path)
+                        end
+                    end
+
+                    -- Add project root itself
+                    table.insert(extra_paths, root_dir)
+
+                    config.settings.ty.python.analysis.extraPaths = extra_paths
+                end,
                 settings = {
                     ty = {
                         experimental = {
                             rename = true,
                             autoImport = true,
+                        },
+                        python = {
+                            pythonPath = vim.fn.exepath('python3') or vim.fn.exepath('python'),
+                            analysis = {
+                                extraPaths = {},
+                                -- Add additional custom paths here:
+                                -- extraPaths = { '/path/to/custom/libs' },
+                            },
                         },
                     },
                 },
