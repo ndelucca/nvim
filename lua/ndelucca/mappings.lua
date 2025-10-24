@@ -28,19 +28,11 @@ vim.keymap.set('n', '[c', ':Gitsigns prev_hunk<CR>', { desc = 'Previous hunk' })
 
 vim.keymap.set({ "n", "x" }, "<leader>z", ":ZenMode<CR>", { desc = "Toggle zen mode" })
 
-vim.api.nvim_create_autocmd('LspAttach', {
-    callback = function(args)
-        local opts = { noremap = true, silent = true, buffer = args.buf }
-        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-        vim.keymap.set("n", "gk", vim.lsp.buf.hover, opts)
-        vim.keymap.set('n', 'gr', vim.lsp.buf.rename, opts)
-        vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, opts)
-        vim.keymap.set("n", "gf", vim.lsp.buf.format, opts)
-        vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
-        vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-        vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-    end,
-})
+vim.keymap.set("n", "gk", vim.lsp.buf.hover)
+vim.keymap.set('n', 'gr', vim.lsp.buf.rename)
+vim.keymap.set('n', 'ga', vim.lsp.buf.code_action)
+vim.keymap.set("n", "gf", vim.lsp.buf.format)
+vim.keymap.set("n", "gd", vim.diagnostic.open_float)
 
 vim.api.nvim_create_user_command(
     'ToggleSplitStruct',
