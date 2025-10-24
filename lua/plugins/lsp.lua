@@ -44,11 +44,6 @@ return {
                             rename = true,
                             autoImport = true,
                         },
-                        python = {
-                            analysis = {
-                                extraPaths = {},
-                            },
-                        },
                     },
                 },
             })

@@ -28,6 +28,8 @@ vim.keymap.set('n', '[c', ':Gitsigns prev_hunk<CR>', { desc = 'Previous hunk' })
 
 vim.keymap.set({ "n", "x" }, "<leader>z", ":ZenMode<CR>", { desc = "Toggle zen mode" })
 
+vim.keymap.set("n", "gt", vim.lsp.buf.type_definition)
+vim.keymap.set("n", "ge", vim.lsp.buf.definition)
 vim.keymap.set("n", "gk", vim.lsp.buf.hover)
 vim.keymap.set('n', 'gr', vim.lsp.buf.rename)
 vim.keymap.set('n', 'ga', vim.lsp.buf.code_action)
