@@ -1,3 +1,5 @@
+vim.keymap.set('n', '<F5>', ':checktime<CR>')
+
 vim.keymap.set('n', '[b', ':bprev<CR>', { desc = 'Previous buffer' })
 vim.keymap.set('n', ']b', ':bnext<CR>', { desc = 'Next buffer' })
 
