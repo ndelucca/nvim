@@ -26,8 +26,6 @@ vim.keymap.set('n', '<leader>hb', ':Gitsigns blame_line<CR>', { desc = 'Blame li
 vim.keymap.set('n', ']c', ':Gitsigns next_hunk<CR>', { desc = 'Next hunk' })
 vim.keymap.set('n', '[c', ':Gitsigns prev_hunk<CR>', { desc = 'Previous hunk' })
 
-vim.keymap.set({ "n", "x" }, "<leader>z", ":ZenMode<CR>", { desc = "Toggle zen mode" })
-
 vim.keymap.set("n", "gt", vim.lsp.buf.type_definition)
 vim.keymap.set("n", "ge", vim.lsp.buf.definition)
 vim.keymap.set("n", "gk", vim.lsp.buf.hover)

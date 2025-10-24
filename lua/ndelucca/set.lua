@@ -52,3 +52,9 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 })
 
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
+vim.diagnostic.config {
+    underline = false,
+    virtual_text = false
+}
+
