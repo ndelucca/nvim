@@ -1,6 +1,6 @@
 vim.opt.iskeyword:remove(":")
 
-vim.opt.nu = true
+vim.opt.number = true
 vim.opt.relativenumber = true
 
 vim.opt.splitbelow = true
