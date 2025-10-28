@@ -28,7 +28,7 @@ nmap('<leader>fg', '<Cmd>Pick grep_live<CR>', 'Grep live')
 nmap('<leader>fG', '<Cmd>Pick grep pattern="<cword>"<CR>', 'Grep current word')
 nmap('<leader>fh', '<Cmd>Pick help<CR>', 'Help tags')
 nmap('<leader>fb', '<Cmd>lua require("buffer_manager.ui").toggle_quick_menu()<CR>', 'Buffers')
--- nmap('<leader>fb', '<Cmd>Pick buffers<CR>', 'Buffers')
+nmap('<leader>fB', '<Cmd>Pick buffers<CR>', 'Buffers')
 
 -- Buffer management
 nmap('<leader>bj', '<Cmd>bprev<CR>', 'Previous buffer')
