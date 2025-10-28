@@ -1,19 +1,9 @@
 return {
     {
-        "Shatur/neovim-ayu",
-        name = "ayu",
+        "Mofiqul/dracula.nvim",
+        name = "dracula",
         config = function()
-            require('ayu').setup({
-                mirage = false
-            })
-            vim.cmd("colorscheme ayu")
+            vim.cmd("colorscheme dracula")
         end
     },
-    -- {
-    --     "Mofiqul/dracula.nvim",
-    --     name = "dracula",
-    --     config = function()
-    --         vim.cmd("colorscheme dracula")
-    --     end
-    -- },
 }
