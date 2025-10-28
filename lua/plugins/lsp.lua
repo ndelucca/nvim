@@ -73,12 +73,11 @@ return {
                 'ty',
                 'ruff',
                 'djlsp',
-                -- js
-                'javascript',
-                'typescript',
                 -- web
+                'typescript',
+                'javascript',
                 'html',
-                'css_ls',
+                'cssls',
                 -- perl
                 'perlnavigator',
                 -- lua
