@@ -1,41 +1,48 @@
-vim.keymap.set('n', '<F5>', ':checktime<CR>')
+local nmap = function(lhs, rhs, desc)
+    vim.keymap.set('n', lhs, rhs, { desc = desc })
+end
 
-vim.keymap.set('n', '[b', ':bprev<CR>', { desc = 'Previous buffer' })
-vim.keymap.set('n', ']b', ':bnext<CR>', { desc = 'Next buffer' })
+-- General
+nmap('<F5>', ':checktime<CR>')
+-- File explorer
+nmap("-", '<Cmd>lua MiniFiles.open()<CR>', "File explorer")
+-- LSP
+nmap('<leader>la', '<Cmd>lua vim.lsp.buf.code_action()<CR>', 'Actions')
+nmap('<leader>ld', '<Cmd>lua vim.diagnostic.open_float()<CR>', 'Diagnostic popup')
+nmap('<leader>lf', '<Cmd>lua require("conform").format({lsp_fallback=true})<CR>', 'Format')
+nmap('<leader>li', '<Cmd>lua vim.lsp.buf.implementation()<CR>', 'Implementation')
+nmap('<leader>lh', '<Cmd>lua vim.lsp.buf.hover()<CR>', 'Hover')
+nmap('<leader>lr', '<Cmd>lua vim.lsp.buf.rename()<CR>', 'Rename')
+nmap('<leader>lR', '<Cmd>lua vim.lsp.buf.references()<CR>', 'References')
+nmap('<leader>ls', '<Cmd>lua vim.lsp.buf.definition()<CR>', 'Source definition')
+nmap('<leader>lt', '<Cmd>lua vim.lsp.buf.type_definition()<CR>', 'Type definition')
+-- Pickers
+nmap('<leader>f/', '<Cmd>Pick history scope="/"<CR>', '"/" history')
+nmap('<leader>f:', '<Cmd>Pick history scope=":"<CR>', '":" history')
+nmap('<leader>fa', '<Cmd>Pick git_hunks scope="staged"<CR>', 'Added hunks (all)')
+nmap('<leader>fA', '<Cmd>Pick git_hunks path="%" scope="staged"<CR>', 'Added hunks (buf)')
+nmap('<leader>fd', '<Cmd>Pick diagnostic scope="current"<CR>', 'Diagnostic buffer')
+nmap('<leader>fF', '<Cmd>Pick git_files<CR>', 'Git Files')
+nmap('<leader>ff', '<Cmd>Pick files<CR>', 'Files')
+nmap('<leader>fg', '<Cmd>Pick grep_live<CR>', 'Grep live')
+nmap('<leader>fG', '<Cmd>Pick grep pattern="<cword>"<CR>', 'Grep current word')
+nmap('<leader>fh', '<Cmd>Pick help<CR>', 'Help tags')
+nmap('<leader>fb', '<Cmd>lua require("buffer_manager.ui").toggle_quick_menu()<CR>', 'Buffers')
+-- nmap('<leader>fb', '<Cmd>Pick buffers<CR>', 'Buffers')
 
-vim.keymap.set('n', '[q', ':cprev<CR>', { desc = 'Previous quickfix' })
-vim.keymap.set('n', ']q', ':cnext<CR>', { desc = 'Next quickfix' })
-vim.keymap.set('n', '<leader>co', ':copen<CR>', { desc = 'Open quickfix list' })
-vim.keymap.set('n', '<leader>cc', ':cclose<CR>', { desc = 'Close quickfix list' })
-
-vim.keymap.set("n", "-", ":lua MiniFiles.open()<CR>", { desc = "File explorer" })
-
-vim.keymap.set('n', '<C-p>', function()
-    local ok = pcall(MiniExtra.pickers.git_files, {}, {})
-    if not ok then
-        MiniPick.builtin.files({}, {})
-    end
-end, { desc = 'Git files or all files' })
-
-vim.keymap.set('n', '<leader>ff', function() MiniPick.builtin.files({}, {}) end, { desc = 'Find files' })
-vim.keymap.set('n', '<leader>b', function() MiniPick.builtin.buffers({}, {}) end, { desc = 'Buffers' })
-vim.keymap.set('n', '<leader>fs', function() MiniPick.builtin.grep_live({}, {}) end, { desc = 'Live grep' })
-
-vim.keymap.set('n', '<leader>hs', ':Gitsigns stage_hunk<CR>', { desc = 'Stage hunk' })
-vim.keymap.set('n', '<leader>hr', ':Gitsigns reset_hunk<CR>', { desc = 'Reset hunk' })
-vim.keymap.set('n', '<leader>hp', ':Gitsigns preview_hunk<CR>', { desc = 'Preview hunk' })
-vim.keymap.set('n', '<leader>hb', ':Gitsigns blame_line<CR>', { desc = 'Blame line' })
-vim.keymap.set('n', ']c', ':Gitsigns next_hunk<CR>', { desc = 'Next hunk' })
-vim.keymap.set('n', '[c', ':Gitsigns prev_hunk<CR>', { desc = 'Previous hunk' })
-
-vim.keymap.set("n", "gt", vim.lsp.buf.type_definition)
-vim.keymap.set("n", "ge", vim.lsp.buf.definition)
-vim.keymap.set("n", "gk", vim.lsp.buf.hover)
-vim.keymap.set('n', 'gr', vim.lsp.buf.rename)
-vim.keymap.set('n', 'ga', vim.lsp.buf.code_action)
-vim.keymap.set("n", "gf", vim.lsp.buf.format)
-vim.keymap.set("n", "gd", vim.diagnostic.open_float)
-
+-- Buffer management
+nmap('<leader>bj', '<Cmd>bprev<CR>', 'Previous buffer')
+nmap('<leader>bk', '<Cmd>bnext<CR>', 'Next buffer')
+nmap('<leader>ba', '<Cmd>b#<CR>', 'Alternate')
+nmap('<leader>bd', '<Cmd>lua MiniBufremove.delete()<CR>', 'Delete')
+nmap('<leader>bD', '<Cmd>lua MiniBufremove.delete(0, true)<CR>', 'Delete!')
+nmap('<leader>bw', '<Cmd>lua MiniBufremove.wipeout()<CR>', 'Wipeout')
+nmap('<leader>bW', '<Cmd>lua MiniBufremove.wipeout(0, true)<CR>', 'Wipeout!')
+-- Terminal
+vim.keymap.set('t', '<F4>', [[<C-\><C-n>]], { noremap = true, silent = true })
+nmap('tT', '<Cmd>horizontal term<CR>', 'Terminal (horizontal)')
+nmap('tt', '<Cmd>vertical term<CR>', 'Terminal (vertical)')
+-- Custom
 vim.api.nvim_create_user_command(
     'ToggleSplitStruct',
     function()

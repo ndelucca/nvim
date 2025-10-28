@@ -1,5 +1,25 @@
 return {
     {
+        'williamboman/mason.nvim',
+        config = function()
+            require('mason').setup()
+        end
+    },
+    {
+        'stevearc/conform.nvim',
+        config = function()
+            require('conform').setup({
+                formatters_by_ft = {
+                    lua = { "stylua" },
+                    python = { "ruff" },
+                    javascript = { "prettierd" },
+                    htmldjango = { "djlint" },
+                    css = { "prettierd" },
+                },
+            })
+        end
+    },
+    {
         'neovim/nvim-lspconfig',
         config = function()
             vim.lsp.config('lua_ls', {
@@ -49,11 +69,21 @@ return {
             })
 
             local language_servers = {
+                -- python
                 'ty',
                 'ruff',
+                'djlsp',
+                -- js
+                'javascript',
+                'typescript',
+                -- web
                 'html',
+                'css_ls',
+                -- perl
                 'perlnavigator',
+                -- lua
                 'lua_ls',
+                -- ansible
                 'ansiblels',
             }
 
@@ -98,11 +128,5 @@ return {
             end
         end,
         ft = 'yaml.ansible',
-    },
-    {
-        'williamboman/mason.nvim',
-        config = function()
-            require 'mason'.setup {}
-        end
     },
 }
