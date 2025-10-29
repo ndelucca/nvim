@@ -78,8 +78,7 @@ return {
                 'ruff',
                 'djlsp',
                 -- web
-                'typescript',
-                'javascript',
+                'ts_ls',
                 'html',
                 'cssls',
                 -- perl
