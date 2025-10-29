@@ -9,7 +9,7 @@ nmap("-", '<Cmd>lua MiniFiles.open()<CR>', "File explorer")
 -- LSP
 nmap('<leader>la', '<Cmd>lua vim.lsp.buf.code_action()<CR>', 'Actions')
 nmap('<leader>ld', '<Cmd>lua vim.diagnostic.open_float()<CR>', 'Diagnostic popup')
-nmap('<leader>lf', '<Cmd>lua require("conform").format({lsp_fallback=true})<CR>', 'Format')
+nmap('<leader>lf', '<Cmd>lua require("conform").format({timeout_ms=3000, lsp_fallback=true})<CR>', 'Format')
 nmap('<leader>li', '<Cmd>lua vim.lsp.buf.implementation()<CR>', 'Implementation')
 nmap('<leader>lh', '<Cmd>lua vim.lsp.buf.hover()<CR>', 'Hover')
 nmap('<leader>lr', '<Cmd>lua vim.lsp.buf.rename()<CR>', 'Rename')

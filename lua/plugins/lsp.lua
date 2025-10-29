@@ -11,11 +11,15 @@ return {
             require('conform').setup({
                 formatters_by_ft = {
                     lua = { "stylua" },
-                    python = { "ruff" },
+                    python = { "ruff_format" },
                     javascript = { "prettierd" },
                     htmldjango = { "djlint" },
                     css = { "prettierd" },
                 },
+                -- Notify when formatter fails
+                notify_on_error = true,
+                -- Set log level for debugging
+                log_level = vim.log.levels.ERROR,
             })
         end
     },
