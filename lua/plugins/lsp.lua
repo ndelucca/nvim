@@ -13,8 +13,37 @@ return {
                     lua = { "stylua" },
                     python = { "ruff_format" },
                     javascript = { "prettierd" },
-                    htmldjango = { "djlint" },
+                    typescript = { "prettierd" },
+                    javascriptreact = { "prettierd" },
+                    typescriptreact = { "prettierd" },
+                    html = { "prettierd" },
                     css = { "prettierd" },
+                    json = { "prettierd" },
+                    yaml = { "prettierd" },
+                    markdown = { "prettierd" },
+                    htmldjango = { "djlint" },
+                },
+                formatters = {
+                    prettierd = {
+                        prepend_args = {
+                            "--tab-width=4",
+                            "--use-tabs=false",
+                            "--semi=true",
+                            "--single-quote=true",
+                            "--trailing-comma=es5",
+                            "--print-width=120",
+                        },
+                    },
+                    djlint = {
+                        prepend_args = {
+                            "--indent", "4",
+                            "--profile", "django",
+                            "--max-line-length", "120",
+                            -- Uncomment if template variables inside JS/CSS blocks get broken:
+                            -- "--format-css",
+                            -- "--format-js",
+                        },
+                    },
                 },
                 -- Notify when formatter fails
                 notify_on_error = true,
