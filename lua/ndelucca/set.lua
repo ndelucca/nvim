@@ -35,6 +35,7 @@ vim.opt.virtualedit = "block"
 vim.opt.inccommand = "split"
 
 vim.opt.updatetime = 50
+vim.opt.termguicolors = true
 vim.opt.colorcolumn = "100"
 
 if os.getenv("DISPLAY") or os.getenv("WAYLAND_DISPLAY") then
