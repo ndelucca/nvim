@@ -10,6 +10,7 @@ return {
         config = function()
             require("conform").setup({
                 formatters_by_ft = {
+                    sh = { "shfmt" },
                     lua = { "stylua" },
                     python = { "ruff_format" },
                     javascript = { "prettierd" },
@@ -26,6 +27,9 @@ return {
                     cs = { "csharpier" },
                 },
                 formatters = {
+                    shfmt = {
+                        prepend_args = { "-i", "4", "-ci", "-bn" },
+                    },
                     stylua = {
                         prepend_args = {
                             "--indent-type",
@@ -141,8 +145,8 @@ return {
         end,
     },
     {
-        "pearofducks/ansible-vim", -- Install Ansible syntax
-        lazy = false, -- Force load
+        "pearofducks/ansible-vim",
+        lazy = false,
         config = function()
             -- Set .yml and .yaml to yaml.ansible
             local create_autocmd = vim.api.nvim_create_autocmd
