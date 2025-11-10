@@ -26,7 +26,12 @@ return {
                             height = height,
                         }
                     end,
-                }
+                },
+                sources = {
+                    files = {
+                        hidden = true,
+                    },
+                },
             })
             require('mini.extra').setup({})
             require('mini.statusline').setup({})
