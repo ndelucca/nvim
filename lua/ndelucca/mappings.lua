@@ -17,19 +17,37 @@ nmap('<leader>lR', '<Cmd>lua vim.lsp.buf.references()<CR>', 'References')
 nmap('<leader>ls', '<Cmd>lua vim.lsp.buf.definition()<CR>', 'Source definition')
 nmap('<leader>lt', '<Cmd>lua vim.lsp.buf.type_definition()<CR>', 'Type definition')
 -- Pickers
-nmap('<leader>f/', '<Cmd>Pick history scope="/"<CR>', '"/" history')
-nmap('<leader>f:', '<Cmd>Pick history scope=":"<CR>', '":" history')
-nmap('<leader>fa', '<Cmd>Pick git_hunks scope="staged"<CR>', 'Added hunks (all)')
-nmap('<leader>fA', '<Cmd>Pick git_hunks path="%" scope="staged"<CR>', 'Added hunks (buf)')
-nmap('<leader>fd', '<Cmd>Pick diagnostic scope="current"<CR>', 'Diagnostic buffer')
-nmap('<leader>fF', '<Cmd>Pick git_files<CR>', 'Git Files')
-nmap('<leader>ff', '<Cmd>Pick files<CR>', 'Files')
-nmap('<leader>fg', '<Cmd>Pick grep_live<CR>', 'Grep live')
-nmap('<leader>fG', '<Cmd>Pick grep pattern="<cword>"<CR>', 'Grep current word')
-nmap('<leader>fh', '<Cmd>Pick help<CR>', 'Help tags')
-nmap('<leader>fb', '<Cmd>lua require("buffer_manager.ui").toggle_quick_menu()<CR>', 'Buffers')
-nmap('<leader>fB', '<Cmd>Pick buffers<CR>', 'Buffers')
-
+local pick = require('mini.pick')
+local buffer_ui = require('buffer_manager.ui')
+local builtin = pick.builtin
+local function in_git_repo()
+    local result = vim.system({ 'git', 'rev-parse', '--is-inside-work-tree' }):wait()
+    return result.code == 0
+end
+local function smart_files()
+    if in_git_repo() then
+        -- inside git repo: tracked + unstaged
+        builtin.cli({
+            command = { 'bash', '-c', 'git ls-files && git ls-files --others --exclude-standard' },
+            prompt = 'Git files',
+        })
+    else
+        -- not a git repo: normal file picker
+        builtin.files({ show_hidden = true })
+    end
+end
+nmap('<leader>ff', smart_files, 'Smart files')
+nmap('<leader>f/', function() builtin.history({ scope = '/' }) end, '"/" history')
+nmap('<leader>f:', function() builtin.history({ scope = ':' }) end, '":" history')
+nmap('<leader>fa', function() builtin.git_hunks({ scope = 'staged' }) end, 'Added hunks (all)')
+nmap('<leader>fA', function() builtin.git_hunks({ path = '%', scope = 'staged' }) end, 'Added hunks (buf)')
+nmap('<leader>fd', function() builtin.diagnostic({ scope = 'current' }) end, 'Diagnostic buffer')
+nmap('<leader>fg', function() builtin.grep_live({ show_hidden = true }) end, 'Live grep')
+nmap('<leader>fG', function() builtin.grep({ show_hidden = true, pattern = vim.fn.expand('<cword>'), }) end,
+    'Grep current word')
+nmap('<leader>fh', function() builtin.help() end, 'Help tags')
+nmap('<leader>fb', function() buffer_ui.toggle_quick_menu() end, 'Buffer manager')
+nmap('<leader>fB', function() builtin.buffers() end, 'Buffers')
 -- Buffer management
 nmap('<leader>bj', '<Cmd>bprev<CR>', 'Previous buffer')
 nmap('<leader>bk', '<Cmd>bnext<CR>', 'Next buffer')
