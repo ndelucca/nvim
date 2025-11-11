@@ -5,7 +5,12 @@ end
 -- General
 nmap('<F5>', vim.cmd.checktime)
 -- File explorer
-nmap('-', function() require('mini.files').open() end, 'File explorer')
+local function open_files_current()
+  local bufpath = vim.fn.expand('%:p:h')
+  local path = (bufpath ~= '') and bufpath or vim.loop.cwd()
+  require('mini.files').open(path)
+end
+nmap('-', open_files_current, 'File explorer')
 
 -- LSP
 nmap('<leader>la', vim.lsp.buf.code_action, 'Actions')
