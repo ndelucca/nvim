@@ -43,7 +43,7 @@ return {
                 },
                 ensure_installed = {
                     "c", "lua", "vim", "vimdoc", "query", "javascript", "perl", "python",
-                    "go", "css", "yaml", "bash", "json", "jsonc", "markdown", "typescript", "html"
+                    "go", "css", "yaml", "bash", "json", "markdown", "typescript", "html"
                 },
             }
         end,
