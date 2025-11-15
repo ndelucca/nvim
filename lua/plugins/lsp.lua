@@ -1,12 +1,14 @@
 return {
     {
         "williamboman/mason.nvim",
+        cond = not vim.g.vscode,
         config = function()
             require("mason").setup()
         end,
     },
     {
         "stevearc/conform.nvim",
+        cond = not vim.g.vscode,
         config = function()
             require("conform").setup({
                 formatters_by_ft = {
@@ -71,6 +73,7 @@ return {
     },
     {
         "neovim/nvim-lspconfig",
+        cond = not vim.g.vscode,
         config = function()
             vim.lsp.config("lua_ls", {
                 on_init = function(client)
@@ -147,6 +150,7 @@ return {
     {
         "pearofducks/ansible-vim",
         lazy = false,
+        cond = not vim.g.vscode,
         config = function()
             -- Set .yml and .yaml to yaml.ansible
             local create_autocmd = vim.api.nvim_create_autocmd

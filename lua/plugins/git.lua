@@ -1,6 +1,7 @@
 return {
     {
         "NeogitOrg/neogit",
+        cond = not vim.g.vscode,
         dependencies = {
             "nvim-lua/plenary.nvim",
             "sindrets/diffview.nvim",
@@ -9,6 +10,7 @@ return {
     },
     {
         'lewis6991/gitsigns.nvim',
+        cond = not vim.g.vscode,
         config = function()
             require('gitsigns').setup({
                 current_line_blame = true,

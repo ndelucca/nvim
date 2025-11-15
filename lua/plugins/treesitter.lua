@@ -10,12 +10,14 @@ return {
             vim.g.skip_ts_context_commentstring_module = true
             require("nvim-treesitter.configs").setup {
                 auto_install = true,
+                -- Disable highlighting in VSCode (VSCode handles this)
                 highlight = {
-                    enable = true,
+                    enable = not vim.g.vscode,
                     additional_vim_regex_highlighting = false,
                 },
+                -- Disable indent in VSCode (VSCode handles this)
                 indent = {
-                    enable = true,
+                    enable = not vim.g.vscode,
                 },
                 incremental_selection = {
                     enable = true,
@@ -41,7 +43,7 @@ return {
                 },
                 ensure_installed = {
                     "c", "lua", "vim", "vimdoc", "query", "javascript", "perl", "python",
-                    "go", "css", "yaml", "bash", "json", "markdown", "typescript", "html"
+                    "go", "css", "yaml", "bash", "json", "jsonc", "markdown", "typescript", "html"
                 },
             }
         end,

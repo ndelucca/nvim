@@ -1,6 +1,7 @@
 return {
     "jake-stewart/multicursor.nvim",
     branch = "1.0",
+    cond = not vim.g.vscode,
     config = function()
         local nxmap = function(lhs, rhs, desc) vim.keymap.set({ 'n', 'x' }, lhs, rhs, { desc = desc }) end
         local mc = require("multicursor-nvim")

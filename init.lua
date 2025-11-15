@@ -6,4 +6,9 @@ if vim.g.vscode == nil then
 end
 
 require 'ndelucca.set'
-require 'ndelucca.mappings'
+
+if vim.g.vscode then
+    require 'ndelucca.vscode'
+else
+    require 'ndelucca.mappings'
+end

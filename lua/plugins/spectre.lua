@@ -1,6 +1,7 @@
 return {
     {
         "nvim-pack/nvim-spectre",
+        cond = not vim.g.vscode,
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
             require("spectre").setup({})
